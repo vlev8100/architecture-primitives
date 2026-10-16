@@ -1,7 +1,34 @@
 [project]
 name = "architecture-primitives"
 version = "0.1.0"
-description = "Add your description here"
+description = "Pydantic primitives for discribing architecture of software solutions"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Vitalijs Levasins", email = "vlev8100@pm.me" }]
+dependencies = [
+    "pydantic==2.13.4",
+    "python-dotenv==1.2.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/vlev8100/architecture-primitives"
+Repository = "https://github.com/vlev8100/architecture-primitives"
+Issues = "https://github.com/vlev8100/architecture-primitives/issues"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1,<10",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[build-system]
+requires = ["uv_build>=0.9.18,<0.10"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "architecture_as_code"
