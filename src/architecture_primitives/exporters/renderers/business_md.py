@@ -53,46 +53,31 @@ def render_value_stream(value_stream: ValueStream) -> MD:
 
     return (
         f"## Value Stream: {value_stream.name}\n\n"
-        f"{_escape(value_stream.description)}\n\n"
-        + header
-        + "\n"
-        + "\n".join(rows)
+        f"{_escape(value_stream.description)}\n\n" + header + "\n" + "\n".join(rows)
     )
 
 
 def render_capabilities(capabilities: list[BusinessCapability]) -> MD:
     header = "| Capability | Description |\n| --- | --- |"
-    rows = [
-        f"| {_escape(c.name)} | {_escape(c.description)} |"
-        for c in capabilities
-    ]
+    rows = [f"| {_escape(c.name)} | {_escape(c.description)} |" for c in capabilities]
     return "## Business Capabilities\n\n" + header + "\n" + "\n".join(rows)
 
 
 def render_stakeholders(stakeholders: list[Stakeholder]) -> MD:
     header = "| Stakeholder | Description |\n| --- | --- |"
-    rows = [
-        f"| {_escape(s.name)} | {_escape(s.description)} |"
-        for s in stakeholders
-    ]
+    rows = [f"| {_escape(s.name)} | {_escape(s.description)} |" for s in stakeholders]
     return "## Stakeholders\n\n" + header + "\n" + "\n".join(rows)
 
 
 def render_external_systems(external_systems: list[ExternalSystem]) -> MD:
     header = "| External System | Description |\n| --- | --- |"
-    rows = [
-        f"| {_escape(s.name)} | {_escape(s.description)} |"
-        for s in external_systems
-    ]
+    rows = [f"| {_escape(s.name)} | {_escape(s.description)} |" for s in external_systems]
     return "## External Systems\n\n" + header + "\n" + "\n".join(rows)
 
 
 def render_integrations(integrations: list[Integration]) -> MD:
     header = "| External System | Reason |\n| --- | --- |"
-    rows = [
-        f"| {_escape(i.system.name)} | {_escape(i.reason)} |"
-        for i in integrations
-    ]
+    rows = [f"| {_escape(i.system.name)} | {_escape(i.reason)} |" for i in integrations]
     return "## Integrations\n\n" + header + "\n" + "\n".join(rows)
 
 

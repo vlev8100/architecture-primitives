@@ -15,6 +15,4 @@ from architecture_primitives.primitives.solution import SolutionArchitecture
 def render(destination: Path, solution_architecture: SolutionArchitecture) -> None:
     """Render the solution architecture to a single Markdown file at ``destination``."""
     destination.parent.mkdir(parents=True, exist_ok=True)
-    destination.write_text(
-        render_solution_architecture(solution_architecture), encoding="utf-8"
-    )
+    destination.write_text(render_solution_architecture(solution_architecture), encoding="utf-8")

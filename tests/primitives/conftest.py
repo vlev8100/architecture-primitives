@@ -13,14 +13,9 @@ from architecture_primitives.primitives.business import (
     Integration,
     Solution,
     Stakeholder,
-    ValueStream,
-    ValueStreamStage,
 )
 from architecture_primitives.primitives.data import (
-    DataArchitecture,
     LogicalEntity,
-    Multiplicity,
-    Relationship,
 )
 
 SOLUTION = BusinessArchitecture.SOLUTION
@@ -67,9 +62,7 @@ def make_api(operations: list[Operation], *, protocol: str = "REST") -> Api:
         protocol=protocol,
         documentation=[],
         operations=operations,
-        authentication=Authentication(
-            protocol=AuthenticationProtocol.NONE, key_details="none"
-        ),
+        authentication=Authentication(protocol=AuthenticationProtocol.NONE, key_details="none"),
     )
 
 
@@ -84,8 +77,5 @@ def make_business_architecture(
         value_streams=[],
         capabilities=capabilities,
         stakeholders=stakeholders or [],
-        integrations=[
-            Integration(system=system, reason=f"needs {system.name}")
-            for system in external_systems
-        ],
+        integrations=[Integration(system=system, reason=f"needs {system.name}") for system in external_systems],
     )

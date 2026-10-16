@@ -1,20 +1,25 @@
-from typing import ClassVar, Optional
+from typing import ClassVar
 
 from pydantic import BaseModel, Field
 
 from architecture_primitives.primitives.common import ArchitectureEntity
 
+
 class Solution(ArchitectureEntity):
     """The solution being designed by this architecture"""
+
     pass
 
 
 class ExternalSystem(ArchitectureEntity):
     """A system wich will be integrated with the solution"""
+
     pass
+
 
 class Stakeholder(ArchitectureEntity):
     """Actor who receive measurable value from the value stream stage, or who contribute to creating or delivering that value"""
+
     pass
 
 
@@ -31,9 +36,12 @@ class ValueStreamStage(ArchitectureEntity):
     )
     exit_criteria: str = Field(
         description="The end state condition that denotes the completion of the value stream stage; "
-                    "i.e., when the required value has been created or delivered to the stakeholders. "
-                    "This information becomes the entry criteria for the next value stream stage.")
-    value_item: str = Field(description="The incremental value that is created or delivered to the participating stakeholder(s) by the value stream stage")
+        "i.e., when the required value has been created or delivered to the stakeholders. "
+        "This information becomes the entry criteria for the next value stream stage."
+    )
+    value_item: str = Field(
+        description="The incremental value that is created or delivered to the participating stakeholder(s) by the value stream stage"
+    )
 
 
 class ValueStream(ArchitectureEntity):
@@ -58,4 +66,3 @@ class BusinessArchitecture(BaseModel):
     capabilities: list[BusinessCapability] = Field(description="List of business capabilities")
     stakeholders: list[Stakeholder] = Field(description="List of business stakeholders")
     integrations: list[Integration] = Field(description="List of integrations")
-    

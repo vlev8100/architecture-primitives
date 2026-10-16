@@ -4,6 +4,7 @@ import pytest
 from pydantic import ValidationError
 
 from architecture_primitives.primitives.data import DataArchitecture
+
 from .conftest import (
     make_business_architecture,
     make_capability,

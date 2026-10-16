@@ -1,5 +1,4 @@
 from enum import Enum
-from typing import Optional
 
 from pydantic import BaseModel, Field, model_validator
 
@@ -14,8 +13,11 @@ from architecture_primitives.primitives.common import ArchitectureEntity
 
 class LogicalEntity(ArchitectureEntity):
     """Data Entity"""
+
     business_capability: BusinessCapability = Field(description="associated business capability")
-    owner: Solution | ExternalSystem = Field(description="Owner of the data entity. System that is responsible for it's creation, further lyfecicle")
+    owner: Solution | ExternalSystem = Field(
+        description="Owner of the data entity. System that is responsible for it's creation, further lyfecicle"
+    )
 
 
 class Multiplicity(str, Enum):
@@ -37,7 +39,9 @@ class Relationship(ArchitectureEntity):
 
 
 class DataArchitecture(BaseModel):
-    business_architecture: BusinessArchitecture = Field(description="the business architecture this data architecture is anchored to")
+    business_architecture: BusinessArchitecture = Field(
+        description="the business architecture this data architecture is anchored to"
+    )
     entities: list[LogicalEntity] = Field(description="all data entities")
     relationships: list[Relationship] = Field(description="all relationships")
 
@@ -45,10 +49,7 @@ class DataArchitecture(BaseModel):
     def _check_consistency(self) -> "DataArchitecture":
         problems = self._check()
         if problems:
-            raise ValueError(
-                "Data architecture is inconsistent:\n"
-                + "\n".join(f"- {p}" for p in problems)
-            )
+            raise ValueError("Data architecture is inconsistent:\n" + "\n".join(f"- {p}" for p in problems))
         return self
 
     def _check(self) -> list[str]:
@@ -69,13 +70,10 @@ class DataArchitecture(BaseModel):
 
         for capability in self.business_architecture.capabilities:
             if capability.name not in entity_capability_names:
-                problems.append(
-                    f"Business capability '{capability.name}' has no associated data entities."
-                )
+                problems.append(f"Business capability '{capability.name}' has no associated data entities.")
 
         external_systems = {
-            integration.system.name: integration.system
-            for integration in self.business_architecture.integrations
+            integration.system.name: integration.system for integration in self.business_architecture.integrations
         }
         for value_stream in self.business_architecture.value_streams:
             for stage in value_stream.stages:
@@ -85,8 +83,6 @@ class DataArchitecture(BaseModel):
         owner_names = {entity.owner.name for entity in self.entities}
         for system_name in external_systems:
             if system_name not in owner_names:
-                problems.append(
-                    f"External system '{system_name}' does not own any data entity."
-                )
+                problems.append(f"External system '{system_name}' does not own any data entity.")
 
         return problems

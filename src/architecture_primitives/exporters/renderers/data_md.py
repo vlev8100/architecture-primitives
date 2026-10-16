@@ -19,10 +19,7 @@ def _escape(text: str) -> str:
 
 
 def render_entities(entities: list[LogicalEntity]) -> MD:
-    header = (
-        "| Entity | Business Capability | Owner | Description |\n"
-        "| --- | --- | --- | --- |"
-    )
+    header = "| Entity | Business Capability | Owner | Description |\n| --- | --- | --- | --- |"
     rows = [
         "| "
         + " | ".join(
@@ -41,10 +38,7 @@ def render_entities(entities: list[LogicalEntity]) -> MD:
 
 
 def render_relationships(relationships: list[Relationship]) -> MD:
-    header = (
-        "| From | Multiplicity | To | Multiplicity | Description |\n"
-        "| --- | --- | --- | --- | --- |"
-    )
+    header = "| From | Multiplicity | To | Multiplicity | Description |\n| --- | --- | --- | --- | --- |"
     rows = [
         "| "
         + " | ".join(

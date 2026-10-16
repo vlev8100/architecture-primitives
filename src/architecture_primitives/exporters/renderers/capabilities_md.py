@@ -31,10 +31,7 @@ def _physical_entities(application: Application) -> list[PhysicalEntity]:
 
 
 def _render_sub_modules(modules: list[SoftwareModule]) -> MD:
-    header = (
-        "| Module | Responsibilities | Git Reference | Production Code |\n"
-        "| --- | --- | --- | --- |"
-    )
+    header = "| Module | Responsibilities | Git Reference | Production Code |\n| --- | --- | --- | --- |"
     rows = [
         "| "
         + " | ".join(
@@ -52,17 +49,13 @@ def _render_sub_modules(modules: list[SoftwareModule]) -> MD:
     return "#### Sub-modules\n\n" + header + "\n" + "\n".join(rows)
 
 
-def render_capability(
-    capability: BusinessCapability, applications: list[Application]
-) -> MD:
+def render_capability(capability: BusinessCapability, applications: list[Application]) -> MD:
     sections = [f"## Capability: {capability.name}", _escape(capability.description)]
 
     grouped = False
     for application in applications:
         physical = [
-            p
-            for p in _physical_entities(application)
-            if p.logical_entity.business_capability.name == capability.name
+            p for p in _physical_entities(application) if p.logical_entity.business_capability.name == capability.name
         ]
         if not physical:
             continue
@@ -74,14 +67,8 @@ def render_capability(
             logical = p.logical_entity
             by_logical.setdefault(logical.name, logical.description)
 
-        header = (
-            "| Logical Entity | Description |\n"
-            "| --- | --- |"
-        )
-        rows = [
-            f"| {_escape(name)} | {_escape(description)} |"
-            for name, description in by_logical.items()
-        ]
+        header = "| Logical Entity | Description |\n| --- | --- |"
+        rows = [f"| {_escape(name)} | {_escape(description)} |" for name, description in by_logical.items()]
         sections.append(
             f"### Application: {application.name}\n\n"
             + f"{_escape(application.description)}\n\n"
@@ -103,8 +90,5 @@ def render_capability(
 def render_capabilities_architecture(architecture: SolutionArchitecture) -> MD:
     applications = architecture.application.applications
     sections = ["# Capabilities"]
-    sections.extend(
-        render_capability(capability, applications)
-        for capability in architecture.business.capabilities
-    )
+    sections.extend(render_capability(capability, applications) for capability in architecture.business.capabilities)
     return "\n\n".join(sections) + "\n"

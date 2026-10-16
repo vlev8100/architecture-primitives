@@ -20,6 +20,7 @@ Issues = "https://github.com/vlev8100/architecture-primitives/issues"
 [dependency-groups]
 dev = [
     "pytest>=9.1.1,<10",
+    "ruff>=0.17.1",
 ]
 
 [tool.pytest.ini_options]
@@ -32,3 +33,10 @@ build-backend = "uv_build"
 
 [tool.uv.build-backend]
 module-name = "architecture_primitives"
+
+[tool.ruff]
+line-length = 120
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

@@ -32,10 +32,7 @@ def _tech(tech_stack) -> str:
 
 
 def render_applications(applications: list[Application]) -> MD:
-    header = (
-        "| Application | Description | Modules |\n"
-        "| --- | --- | --- |"
-    )
+    header = "| Application | Description | Modules |\n| --- | --- | --- |"
     rows = [
         "| "
         + " | ".join(
@@ -53,10 +50,7 @@ def render_applications(applications: list[Application]) -> MD:
 
 
 def render_production_code(production_code: list[ProductionCode]) -> MD:
-    header = (
-        "| Location | Tech Stack | Packages |\n"
-        "| --- | --- | --- |"
-    )
+    header = "| Location | Tech Stack | Packages |\n| --- | --- | --- |"
     rows = [
         "| "
         + " | ".join(
@@ -74,10 +68,7 @@ def render_production_code(production_code: list[ProductionCode]) -> MD:
 
 
 def render_test_suites(test_suites: list[TestSuite]) -> MD:
-    header = (
-        "| Location | Type | Tech Stack | Packages |\n"
-        "| --- | --- | --- | --- |"
-    )
+    header = "| Location | Type | Tech Stack | Packages |\n| --- | --- | --- | --- |"
     rows = [
         "| "
         + " | ".join(
@@ -127,10 +118,7 @@ def _target_name(target: str | ExternalSystem) -> str:
 
 
 def render_integrations(integrations: list[Integration]) -> MD:
-    header = (
-        "| Target | Protocol | Operation | Read Only | Capability |\n"
-        "| --- | --- | --- | --- | --- |"
-    )
+    header = "| Target | Protocol | Operation | Read Only | Capability |\n| --- | --- | --- | --- | --- |"
     rows = []
     for integration in integrations:
         for op in integration.operations:
@@ -152,10 +140,7 @@ def render_integrations(integrations: list[Integration]) -> MD:
 
 
 def render_persistance(persistance: Persistence) -> MD:
-    header = (
-        "| Storage Type | Tech Stack | Entities |\n"
-        "| --- | --- | --- |"
-    )
+    header = "| Storage Type | Tech Stack | Entities |\n| --- | --- | --- |"
     rows = [
         "| "
         + " | ".join(
@@ -163,10 +148,7 @@ def render_persistance(persistance: Persistence) -> MD:
             for cell in (
                 storage.type.value,
                 _tech(storage.tech_stack),
-                ", ".join(
-                    f"{pe.class_name} ({pe.logical_entity.name})"
-                    for pe in storage.entities
-                ),
+                ", ".join(f"{pe.class_name} ({pe.logical_entity.name})" for pe in storage.entities),
             )
         )
         + " |"
@@ -176,10 +158,7 @@ def render_persistance(persistance: Persistence) -> MD:
 
 
 def render_agents(git_repos: list[GitRepo]) -> MD:
-    header = (
-        "| Repository | Agent | Path | Purpose |\n"
-        "| --- | --- | --- | --- |"
-    )
+    header = "| Repository | Agent | Path | Purpose |\n| --- | --- | --- | --- |"
     rows = [
         "| "
         + " | ".join(
@@ -202,10 +181,8 @@ def render_software_module(module: SoftwareModule) -> MD:
     sections = [
         f"### Module: {module.name}",
         _escape(module.description),
-        "**Business capabilities:** "
-        + ", ".join(c.name for c in module.business_capabilities),
-        f"**Repository:** {_escape(module.git_repo.name)} "
-        f"({_escape(module.git_repo.git_reference)})",
+        "**Business capabilities:** " + ", ".join(c.name for c in module.business_capabilities),
+        f"**Repository:** {_escape(module.git_repo.name)} ({_escape(module.git_repo.git_reference)})",
     ]
     sections.append(render_production_code(module.production_code))
     if module.test_suites:
@@ -239,7 +216,5 @@ def render_application(application: Application) -> MD:
 def render_application_architecture(architecture: ApplicationArchitecture) -> MD:
     sections = ["# Application Architecture"]
     sections.append(render_applications(architecture.applications))
-    sections.extend(
-        render_application(app) for app in architecture.applications
-    )
+    sections.extend(render_application(app) for app in architecture.applications)
     return "\n\n".join(sections) + "\n"

@@ -16,10 +16,7 @@ class SolutionArchitecture(BaseModel):
     def _check_consistency(self) -> "SolutionArchitecture":
         problems = self._check()
         if problems:
-            raise ValueError(
-                "Solution architecture is inconsistent:\n"
-                + "\n".join(f"- {p}" for p in problems)
-            )
+            raise ValueError("Solution architecture is inconsistent:\n" + "\n".join(f"- {p}" for p in problems))
         return self
 
     def _check(self) -> list[str]:
@@ -35,9 +32,7 @@ class SolutionArchitecture(BaseModel):
 
         for capability in self.business.capabilities:
             if capability.name not in linked_capabilities:
-                problems.append(
-                    f"Business capability '{capability.name}' is not linked to any application."
-                )
+                problems.append(f"Business capability '{capability.name}' is not linked to any application.")
 
         return problems
 

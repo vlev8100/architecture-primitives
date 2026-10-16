@@ -1,4 +1,5 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+
 
 class ArchitectureEntity(BaseModel):
     """Base for all TOGAF metamodel entities. Carries the universal attributes."""
