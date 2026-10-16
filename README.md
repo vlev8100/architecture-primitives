@@ -1,4 +1,4 @@
-# architecture-primitives
+# Architecture Primitives
 
 The goal of this project is to provide a simple framework for capturing the architecture and known
 conventions of software solutions.
@@ -26,17 +26,17 @@ This knowledge graph should assist software developers and AI agents answering t
 
 # Implementation
 
-The framework is a Python package under `src/architecture_as_code`, organised into three parts:
+The framework is a Python package under `src/architecture_primitives`, organised into three parts:
 
 ## Primitives
 
-`src/architecture_as_code/primitives/` holds the vocabulary used to describe a solution as
+`src/architecture_primitives/primitives/` holds the vocabulary used to describe a solution as
 [Pydantic](https://docs.pydantic.dev/) models. Knowledge is captured by instantiating these
 primitives, and Pydantic validation keeps the definition internally consistent (e.g. relative-only
 paths, capability/entity cross-references). 
 
 # Exporters
 
-Exporters live in `src/architecture_as_code/exporters/` and produce harness/model-specific views on
+Exporters live in `src/architecture_primitives/exporters/` and produce harness/model-specific views on
 the captured knowledge — instructions that can be incorporated into Software factories:
 

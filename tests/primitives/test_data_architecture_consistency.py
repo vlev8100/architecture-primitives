@@ -1,9 +1,9 @@
-"""Consistency checks for architecture_as_code.primitives.data.DataArchitecture."""
+"""Consistency checks for architecture_primitives.primitives.data.DataArchitecture."""
 
 import pytest
 from pydantic import ValidationError
 
-from architecture_as_code.primitives.data import DataArchitecture
+from architecture_primitives.primitives.data import DataArchitecture
 from .conftest import (
     make_business_architecture,
     make_capability,

@@ -7,8 +7,8 @@ Renders the application architecture as Markdown tables:
   integrations, persistence, repository and local agents.
 """
 
-from architecture_as_code.exporters.renderers import MD
-from architecture_as_code.primitives.application import (
+from architecture_primitives.exporters.renderers import MD
+from architecture_primitives.primitives.application import (
     Api,
     Application,
     ApplicationArchitecture,
@@ -19,7 +19,7 @@ from architecture_as_code.primitives.application import (
     SoftwareModule,
     TestSuite,
 )
-from architecture_as_code.primitives.business import ExternalSystem
+from architecture_primitives.primitives.business import ExternalSystem
 
 
 def _escape(text: str) -> str:

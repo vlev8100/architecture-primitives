@@ -1,4 +1,4 @@
-"""Consistency checks for architecture_as_code.primitives.application.Api."""
+"""Consistency checks for architecture_primitives.primitives.application.Api."""
 
 import pytest
 from pydantic import ValidationError

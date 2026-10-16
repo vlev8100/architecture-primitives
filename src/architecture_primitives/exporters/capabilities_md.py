@@ -6,10 +6,10 @@ writes it to a file on disk.
 
 from pathlib import Path
 
-from architecture_as_code.exporters.renderers.capabilities_md import (
+from architecture_primitives.exporters.renderers.capabilities_md import (
     render_capabilities_architecture,
 )
-from architecture_as_code.primitives.solution import SolutionArchitecture
+from architecture_primitives.primitives.solution import SolutionArchitecture
 
 
 def render(destination: Path, solution_architecture: SolutionArchitecture) -> None:

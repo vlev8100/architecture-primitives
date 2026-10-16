@@ -2,7 +2,7 @@ from typing import ClassVar, Optional
 
 from pydantic import BaseModel, Field
 
-from architecture_as_code.primitives.common import ArchitectureEntity
+from architecture_primitives.primitives.common import ArchitectureEntity
 
 class Solution(ArchitectureEntity):
     """The solution being designed by this architecture"""

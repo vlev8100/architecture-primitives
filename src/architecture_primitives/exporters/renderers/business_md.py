@@ -6,8 +6,8 @@ Renders the business architecture as Markdown tables:
 * a table of stakeholders.
 """
 
-from architecture_as_code.exporters.renderers import MD
-from architecture_as_code.primitives.business import (
+from architecture_primitives.exporters.renderers import MD
+from architecture_primitives.primitives.business import (
     BusinessArchitecture,
     BusinessCapability,
     ExternalSystem,

@@ -5,14 +5,14 @@ capability's description followed by its logical entities grouped by the
 application that persists them (linked through their physical entities).
 """
 
-from architecture_as_code.exporters.renderers import MD
-from architecture_as_code.primitives.application import (
+from architecture_primitives.exporters.renderers import MD
+from architecture_primitives.primitives.application import (
     Application,
     PhysicalEntity,
     SoftwareModule,
 )
-from architecture_as_code.primitives.business import BusinessCapability
-from architecture_as_code.primitives.solution import SolutionArchitecture
+from architecture_primitives.primitives.business import BusinessCapability
+from architecture_primitives.primitives.solution import SolutionArchitecture
 
 
 def _escape(text: str) -> str:

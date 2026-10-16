@@ -4,15 +4,15 @@ Combines the business, data and application layer exporters into a single
 Markdown document for the whole solution.
 """
 
-from architecture_as_code.exporters.renderers import MD
-from architecture_as_code.exporters.renderers.application_md import (
+from architecture_primitives.exporters.renderers import MD
+from architecture_primitives.exporters.renderers.application_md import (
     render_application_architecture,
 )
-from architecture_as_code.exporters.renderers.business_md import (
+from architecture_primitives.exporters.renderers.business_md import (
     render_business_architecture,
 )
-from architecture_as_code.exporters.renderers.data_md import render_data_architecture
-from architecture_as_code.primitives.solution import SolutionArchitecture
+from architecture_primitives.exporters.renderers.data_md import render_data_architecture
+from architecture_primitives.primitives.solution import SolutionArchitecture
 
 
 def render_solution_architecture(architecture: SolutionArchitecture) -> MD:

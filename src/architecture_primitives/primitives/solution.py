@@ -1,8 +1,8 @@
 from pydantic import BaseModel, Field, model_validator
 
-from architecture_as_code.primitives.application import ApplicationArchitecture, SoftwareModule
-from architecture_as_code.primitives.business import BusinessArchitecture
-from architecture_as_code.primitives.data import DataArchitecture
+from architecture_primitives.primitives.application import ApplicationArchitecture, SoftwareModule
+from architecture_primitives.primitives.business import BusinessArchitecture
+from architecture_primitives.primitives.data import DataArchitecture
 
 
 class SolutionArchitecture(BaseModel):

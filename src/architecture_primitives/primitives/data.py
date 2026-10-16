@@ -3,13 +3,13 @@ from typing import Optional
 
 from pydantic import BaseModel, Field, model_validator
 
-from architecture_as_code.primitives.business import (
+from architecture_primitives.primitives.business import (
     BusinessArchitecture,
     BusinessCapability,
     ExternalSystem,
     Solution,
 )
-from architecture_as_code.primitives.common import ArchitectureEntity
+from architecture_primitives.primitives.common import ArchitectureEntity
 
 
 class LogicalEntity(ArchitectureEntity):

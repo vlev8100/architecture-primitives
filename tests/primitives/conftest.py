@@ -1,12 +1,12 @@
 """Shared factory helpers for building minimal valid primitives objects."""
 
-from architecture_as_code.primitives.application import (
+from architecture_primitives.primitives.application import (
     Api,
     Authentication,
     AuthenticationProtocol,
     Operation,
 )
-from architecture_as_code.primitives.business import (
+from architecture_primitives.primitives.business import (
     BusinessArchitecture,
     BusinessCapability,
     ExternalSystem,
@@ -16,7 +16,7 @@ from architecture_as_code.primitives.business import (
     ValueStream,
     ValueStreamStage,
 )
-from architecture_as_code.primitives.data import (
+from architecture_primitives.primitives.data import (
     DataArchitecture,
     LogicalEntity,
     Multiplicity,

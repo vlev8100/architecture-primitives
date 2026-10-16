@@ -1,7 +1,7 @@
 [project]
 name = "architecture-primitives"
 version = "0.1.0"
-description = "Pydantic primitives for discribing architecture of software solutions"
+description = "Pydantic primitives for describing architecture of software solutions"
 readme = "README.md"
 requires-python = ">=3.13"
 license = "MIT"
@@ -31,4 +31,4 @@ requires = ["uv_build>=0.9.18,<0.10"]
 build-backend = "uv_build"
 
 [tool.uv.build-backend]
-module-name = "architecture_as_code"
+module-name = "architecture_primitives"

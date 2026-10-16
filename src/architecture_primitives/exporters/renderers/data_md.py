@@ -5,8 +5,8 @@ Renders the data architecture as Markdown tables:
 * a table of relationships (with multiplicities).
 """
 
-from architecture_as_code.exporters.renderers import MD
-from architecture_as_code.primitives.data import (
+from architecture_primitives.exporters.renderers import MD
+from architecture_primitives.primitives.data import (
     DataArchitecture,
     LogicalEntity,
     Relationship,

@@ -4,12 +4,12 @@ from typing import Annotated, ClassVar, Optional
 from pydantic import AfterValidator, BaseModel, Field, model_validator
 from pathlib import Path
 
-from architecture_as_code.primitives.business import (
+from architecture_primitives.primitives.business import (
     BusinessCapability,
     ExternalSystem,    
 )
-from architecture_as_code.primitives.common import ArchitectureEntity
-from architecture_as_code.primitives.data import LogicalEntity
+from architecture_primitives.primitives.common import ArchitectureEntity
+from architecture_primitives.primitives.data import LogicalEntity
 
 
 def _reject_absolute_path(path: Path) -> Path:
