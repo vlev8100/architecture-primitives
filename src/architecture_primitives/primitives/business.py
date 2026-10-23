@@ -26,8 +26,9 @@ class Stakeholder(ArchitectureEntity):
 class BusinessCapability(ArchitectureEntity):
     """“A business capability is a particular ability or capacity that a business may possess or exchange to achieve a specific purpose or outcome.”"""
 
-    parent: "BusinessCapability | None" = Field(default=None, description="parent capability, if this is a sub-capability")
-
+    parent: "BusinessCapability | None" = Field(
+        default=None, description="parent capability, if this is a sub-capability"
+    )
 
 
 class ValueStreamStage(ArchitectureEntity):
