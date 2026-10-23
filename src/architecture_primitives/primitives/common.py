@@ -1,4 +1,6 @@
-from pydantic import BaseModel
+from typing import Any
+
+from pydantic import BaseModel, Field
 
 
 class ArchitectureEntity(BaseModel):
@@ -6,3 +8,7 @@ class ArchitectureEntity(BaseModel):
 
     name: str
     description: str
+    external_metadata: dict[str, Any] = Field(
+        default_factory=dict,
+        description="Arbitrary metadata from external systems, e.g. {'archimate_id': '...'}.",
+    )
